@@ -1,6 +1,5 @@
 import time
 import numpy as np
-from nf1 import NF1
 import networkx as nx
 from networkx.algorithms import community
 from collections import defaultdict
@@ -56,8 +55,7 @@ def run(datasets, name, algorithm, fn, all_times):
 
 if __name__ == '__main__':
     times = []
-    # datasets = ["karate", "football", "email", "amazon", "youtube"]
-    datasets = ["karate", "football"]
+    datasets = ["karate", "football", "email", "amazon", "youtube"]
     run(datasets, "lpa", community.asyn_lpa_communities, coms_normal, times)
     run(datasets, "gn", community.girvan_newman, coms_gen, times)
     run(datasets, "gm", community.greedy_modularity_communities, coms_normal, times)
