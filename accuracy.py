@@ -1,28 +1,3 @@
-import time
-import numpy as np
-import networkx as nx
-from networkx.algorithms import community
-from collections import defaultdict
-
-def write_to_file(name, communities):
-    sequence = {};
-
-    for i, c in enumerate(communities):
-        for node in list(c):
-            sequence[int(node)] = i
-
-    sequence = sorted(list(sequence.items()))
-    sequence = [f"{i[0]} {i[1]}\n" for i in sequence]
-
-    with open(name, "w") as file:
-        file.writelines(sequence)
-
-def coms_normal(result):
-    return [set(x) for x in result]
-
-def coms_gen(result):
-    return [set(x) for x in next(result)]
-
 def run(datasets, name, all_accuracies):
     def iteration():
         with open(ground_truth_file, 'r') as a, open(result_file, 'r') as b:
@@ -61,7 +36,7 @@ def run(datasets, name, all_accuracies):
 
 if __name__ == '__main__':
     accuracies = []
-    datasets = ["karate", "football", "email", "amazon", "youtube"]
+    datasets = ["karate", "football", "email"] #  "amazon", "youtube"
     run(datasets, "lpa", accuracies)
     run(datasets, "gn", accuracies)
     run(datasets, "gm", accuracies)
