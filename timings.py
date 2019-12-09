@@ -23,12 +23,13 @@ def run(datasets, name, algorithm, all_times):
             iteration()
 
         all_times.append(f"{dataset}, {name}, {times}\n")
+        print(f"{dataset}, {name}, {times}\n")
 
 if __name__ == '__main__':
     times = []
-    datasets = ["youtube"] #  "karate", "football", "email"
-    run(datasets, "lpa", community.asyn_lpa_communities, times)
-    # run(datasets, "gn", community.girvan_newman, times)
+    datasets = ["amazon", "youtube"] #  "karate", "football", "email"
+    # run(datasets, "lpa", community.asyn_lpa_communities, times)
+    run(datasets, "gn", community.girvan_newman, times)
     # run(datasets, "gm", community.greedy_modularity_communities, times)
 
     with open("timings-only.txt", "w") as file:
